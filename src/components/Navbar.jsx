@@ -18,7 +18,6 @@ function Navbar() {
         <a href="#" className="hover:text-white">Beranda</a>
         <a href="#" className="hover:text-white">Explore</a>
         <a href="#" className="hover:text-white">Tentang Kami</a>
-        <a href="#" className="hover:text-white">Kontak</a>
       </div>
     </nav>
   );

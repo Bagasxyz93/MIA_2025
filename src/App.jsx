@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage/HomePage';
 
 function App() {
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Navbar />
       <HomePage /> 
       <Footer />
