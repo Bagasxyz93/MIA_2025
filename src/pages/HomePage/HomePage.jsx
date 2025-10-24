@@ -75,7 +75,7 @@ function HomePage() {
             </h3>
 
             <p className=" text-gray-600 text-center text-sm">
-                JANCOKKKKKK
+                Ngopi sambil produktif! Tempat ideal untuk kerja bareng teman atau membangun relasi baru.
             </p>
           </div>
         </div>
