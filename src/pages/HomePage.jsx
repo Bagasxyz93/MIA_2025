@@ -1,8 +1,8 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import heroImage from '../../assets/hero-bg.jpg';
-import iconRekomendasi from '../../assets/icon-rekomendasi.png';
-import iconKuliner from '../../assets/dinner.png';
-import iconCoworking from '../../assets/icon-coworking.png';
+import heroImage from '../assets/hero-bg.jpg';
+import iconRekomendasi from '../assets/icon-rekomendasi.png';
+import iconKuliner from '../assets/dinner.png';
+import iconCoworking from '../assets/icon-coworking.png';
 
 function HomePage() {
   return (
