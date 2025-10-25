@@ -1,14 +1,18 @@
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
+// src/App.jsx
+
+import { Routes, Route } from 'react-router-dom';
+// GUNAKAN ALIAS '@' DI SINI
+// src/App.jsx
+import HomePage from './pages/HomePage.jsx'; 
+import ExplorePage from './pages/ExplorePage.jsx';
 
 function App() {
   return (
-    <div className="relative min-h-screen flex flex-col overflow-x-hidden">
-      <Navbar />
-      <HomePage /> 
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} /> 
+      <Route path="explore" element={<ExplorePage />} />
+      {/* Rute lain bisa ditambahkan di sini */}
+    </Routes>
   );
 }
 
