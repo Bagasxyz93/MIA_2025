@@ -2,10 +2,11 @@
 
 import Navbar from '../components/Navbar.jsx'; 
 import Footer from '../components/Footer.jsx'; 
+import { Link } from 'react-router-dom';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid';
-import iconRekomendasi from '../assets/icon-rekomendasi.png'; 
-import iconKuliner from '../assets/icon-kuliner.png'; 
-import iconCoworking from '../assets/icon-coworking.png'; 
+import iconRekomendasi from '../assets/assets-HomePage/icon-rekomendasi.png'; 
+import iconKuliner from '../assets/assets-HomePage/icon-kuliner.png'; 
+import iconCoworking from '../assets/assets-HomePage/icon-coworking.png'; 
 
 // HAPUS import heroImage from '../assets/hero-bg.jpg';
 // GUNAKAN PATH DARI FOLDER 'public'
@@ -29,13 +30,20 @@ function HomePage() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white font-bold font-raleway mb-6 leading-tight">
               Temukan coffe shop<br />terbaik di kotamu
             </h1>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 bg-orange-800 hover:bg-orange-900 text-white px-10 py-4 rounded-full text-xl font-semibold font-montagu transition duration-300"
-            >
+            <Link
+              to="/explore"
+              className="inline-flex items-center gap-2 
+                bg-orange-800 hover:bg-orange-900 
+                text-white 
+                px-10 py-4
+                rounded-full 
+                text-xl
+                font-semibold font-montagu 
+                transition duration-300"
+               >
               More!
-              <MagnifyingGlassIcon className="w-5 h-5" />
-            </a>
+                <MagnifyingGlassIcon className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </div> 

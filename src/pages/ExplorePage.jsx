@@ -3,26 +3,29 @@
 import Navbar from '../components/Navbar.jsx'; 
 import Footer from '../components/Footer.jsx'; 
 import { MagnifyingGlassIcon, StarIcon } from '@heroicons/react/24/solid';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { 
   FaMugHot, FaUtensils, FaTree, FaBreadSlice, FaCoffee, 
-  FaSeedling, FaMapMarkerAlt, FaBookmark 
+  FaSeedling, FaBookmark, FaRegBookmark
 } from 'react-icons/fa';
 
 // HAPUS import heroImage from '../assets/hero-bg.jpg';
-// GUNAKAN PATH DARI FOLDER 'public'
+// MENGGUNAKAN PATH DARI FOLDER 'public'
 const heroImage = '/hero-bg.jpg'; 
 
 // Path relatif ini sudah benar karena file-file ini masih di src/assets
-import kopiJaya from '../assets/kopi-jaya.jpg'; 
-import kopiStudio from '../assets/kopi-studio.jpg'; 
-import kopiKenangan from '../assets/jokopi.jpg'; 
-import avatarSteven from '../assets/bahlil.jpg'; 
-import avatarAgus from '../assets/bahlil.jpg'; 
-import avatarTaher from '../assets/bahlil.jpg'; 
+import kopiJaya from '../assets/assets-ExplorePage/kopi-jaya.jpg'; 
+import kopiStudio from '../assets/assets-ExplorePage/kopi-studio.jpg'; 
+import kopiKenangan from '../assets/assets-ExplorePage/jokopi.jpg'; 
+import avatarSteven from '../assets/assets-ExplorePage/bahlil.jpg'; 
+import avatarAgus from '../assets/assets-ExplorePage/bahlil.jpg'; 
+import avatarTaher from '../assets/assets-ExplorePage/bahlil.jpg'; 
 
 function ExplorePage() {
   return (
     <div className="bg-[#fcf4d9]">
+      {/* HERO SECTION */}
       <div className="relative">
         <Navbar isTransparent={true} />
         <div
@@ -47,8 +50,11 @@ function ExplorePage() {
           </div>
         </div>
       </div> 
+
+      {/* SEARCH SECTION */}
       <div className="bg-[#fcf4d9] relative z-20 -mt-8 rounded-t-3xl">
         <section className="py-6 flex justify-end max-w-7xl mx-auto px-6 md:px-10">
+
           <div className="relative flex items-center w-full max-w-lg h-14 rounded-full bg-white overflow-hidden shadow-[0_15px_30px_-5px_rgba(0,0,0,0.3)]">
             <div className="grid place-items-center h-full w-16 text-gray-400">
               <MagnifyingGlassIcon className="w-6 h-6" />
@@ -61,15 +67,9 @@ function ExplorePage() {
           </div>
         </section>
         
-        {/* ========================================================== */}
-        {/* ==== 👇👇👇 PERUBAHANNYA ADA DI BARIS DI BAWAH INI 👇👇👇 ==== */}
-        {/* ========================================================== */}
-        <section 
-          className="max-w-7xl mx-auto mb-16 px-6 md:px-10" 
-          // KOMENTAR: Class 'pt-10' (padding atas) dihapus dari sini 
-          //          agar section ini lebih dekat ke search bar di atasnya.
-          //          Jika terlalu mepet, kamu bisa tambahkan 'pt-4' di sini.
-        >
+        {/* CARD SECTION */}
+        <section className="max-w-7xl mx-auto mb-16 px-6 md:px-10">
+
           <h2 className="text-2xl md:text-3xl font-bold font-montserrat text-gray-800 mt-2 mb-4">
             Spot Pilihan Terbaik Hari Ini
           </h2>
@@ -80,21 +80,27 @@ function ExplorePage() {
           </div>
         </section>
 
+        {/* KATEGORI SECTION */}
         <section className="max-w-7xl mx-auto mb-16 px-6 md:px-10">
-          <h2 className="text-2xl md:text-3xl font-bold font-montserrat text-gray-800 mb-8">
+          
+          <h2 className="text-2xl md:text-3xl font-bold font-montserrat text-gray-800 mb-8 text-left">
             Jelajahi Berbagai Kategori
           </h2>
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-4 md:gap-8 text-center">
-            <KategoriIcon icon={<FaMugHot />} label="Kafe" />
-            <KategoriIcon icon={<FaUtensils />} label="Kuliner" />
-            <KategoriIcon icon={<FaTree />} label="outdoors" />
-            <KategoriIcon icon={<FaBreadSlice />} label="backery" />
-            <KategoriIcon icon={<FaCoffee />} label="Chill Caffe" />
-            <KategoriIcon icon={<FaSeedling />} label="Bubuk Kopi" />
-            <KategoriIcon icon={<FaMapMarkerAlt />} label="Terdekat" />
-            <KategoriIcon icon={<FaBookmark />} label="Kafe yang tersimpan" />
+
+          <div className="w-full flex justify-center">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-8 justify-items-center">
+              <KategoriIcon icon={<FaMugHot />} label="Kafe" />
+              <KategoriIcon icon={<FaUtensils />} label="Kuliner" />
+              <KategoriIcon icon={<FaTree />} label="Outdoors" />
+              <KategoriIcon icon={<FaBreadSlice />} label="Bakery" />
+              <KategoriIcon icon={<FaCoffee />} label="Chill Caffe" />
+              <KategoriIcon icon={<FaSeedling />} label="Bubuk Kopi" />
+              <KategoriIcon icon={<FaBookmark />} label="Kafe Tersimpan" />
+            </div>
           </div>
         </section>
+
+        {/* KOMENTAR SECTION */}
         <section className="max-w-7xl mx-auto mb-12 px-6 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <KomentarCard avatarSrc={avatarSteven} name="Steven Bengkel" comment="Wah isinya lengkap dan menghadirkan banyak fitur yang keren serta warna yang unik" />
@@ -114,19 +120,54 @@ function ExplorePage() {
 }
 
 // --- Komponen Helper (Sudah benar) ---
-const SpotCard = ({ imgSrc, title, description, address }) => (
-  <div className="rounded-xl shadow-lg bg-[#3b2a22] text-white font-montserrat">
-    <div className="p-4"> 
-      <img src={imgSrc} alt={title} className="w-full h-48 object-cover rounded-xl mb-4"/>
-      <h3 className="text-xl md:text-2xl font-bold mb-2">{title}</h3>
-      <p className="text-sm text-[#fcf4d9] mb-1">{description}</p>
-      <p className="text-xs text-[#b49266] mb-3">{address}</p>
-      <div className="flex text-yellow-400">
-        <StarIcon className="w-5 h-5" /> <StarIcon className="w-5 h-5" /> <StarIcon className="w-5 h-5" /> <StarIcon className="w-5 h-5" /> <StarIcon className="w-5 h-5" />
+const SpotCard = ({ imgSrc, title, description, address, id }) => {
+  const navigate = useNavigate();
+  const [saved, setSaved] = useState(false);
+
+  const toggleSave = (e) => {
+    e.stopPropagation(); // supaya klik tombol save tidak ikut membuka halaman detail
+    setSaved(!saved);
+  };
+
+  return (
+    <div
+      onClick={() => navigate(`/cafe/${id}`)}
+      className="relative rounded-xl shadow-lg bg-[#3b2a22] text-white font-montserrat transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
+    >
+      <div className="p-4 relative">
+        {/* Gambar utama */}
+        <img
+          src={imgSrc}
+          alt={title}
+          className="w-full h-48 object-cover rounded-xl mb-4"
+        />
+
+        {/* Isi teks */}
+        <h3 className="text-xl md:text-2xl font-bold mb-2">{title}</h3>
+        <p className="text-sm text-[#fcf4d9] mb-1">{description}</p>
+        <p className="text-xs text-[#b49266] mb-3">{address}</p>
+
+        {/* Rating bintang */}
+        <div className="flex text-yellow-400 mb-8">
+          <StarIcon className="w-5 h-5" />
+          <StarIcon className="w-5 h-5" />
+          <StarIcon className="w-5 h-5" />
+          <StarIcon className="w-5 h-5" />
+          <StarIcon className="w-5 h-5" />
+        </div>
+
+        {/* Tombol Save (kanan bawah & lebih besar) */}
+        <button
+          onClick={toggleSave}
+          className="absolute bottom-4 right-4 text-3xl text-white hover:scale-110 transition-transform"
+        >
+          {saved ? <FaBookmark /> : <FaRegBookmark />}
+        </button>
       </div>
     </div>
-  </div>
-);
+  );
+};
+
 const KategoriIcon = ({ icon, label }) => (
   <div className="flex flex-col items-center gap-2 font-montserrat text-gray-700">
     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#3b2a22] flex items-center justify-center text-2xl md:text-3xl text-white">

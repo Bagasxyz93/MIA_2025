@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/logo.png'; 
+import logo from '../assets/assets-HomePage/logo.png'; 
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 
 // Tambahkan { isTransparent = false } sebagai prop
