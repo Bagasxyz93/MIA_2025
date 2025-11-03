@@ -1,75 +1,116 @@
 // src/components/Navbar.jsx
 
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import logo from '../assets/assets-HomePage/logo.png'; 
+import { NavLink, useLocation } from 'react-router-dom';
+import Lottie from "lottie-react";
+import { motion } from 'framer-motion';
+import coffeeLoveAnimation from '../assets/animations/Coffee-love.json';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 
-// Tambahkan { isTransparent = false } sebagai prop
 function Navbar({ isTransparent = false }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const getNavLinkClass = ({ isActive }) => {
-    let baseClasses = "transition-colors py-2 md:px-3 md:py-1 md:rounded-lg";
-    
-    if (isTransparent) {
-      baseClasses += " hover:bg-black/20"; // Hover gelap di atas gambar
-    } else {
-      baseClasses += " hover:text-white"; // Hover putih di atas cokelat
-    }
-
-    if (isActive) {
-      return `${baseClasses} bg-orange-700`; 
-    }
-    return baseClasses;
-  };
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Explore", path: "/explore" },
+    { name: "About Us", path: "/about-us" },
+  ];
 
   const navClasses = isTransparent
-    ? 'absolute top-0 left-0 w-full z-30 text-white' // Style Transparan
-    : 'bg-[#3b2a22] text-[#fcf4d9]'; // Style Cokelat Solid
+    ? 'absolute top-0 left-0 w-full z-30 text-white'
+    : 'bg-[#3b2a22] text-[#fcf4d9] shadow-md';
 
   return (
-    <nav className={`${navClasses} px-6 md:px-10 py-3 flex justify-between items-center flex-wrap font-montserrat`}>
-      
-      <NavLink to="/" className="flex items-center gap-3 text-xl font-bold">
-        Ngopi Yuk!
-        <img src={logo} alt="Logo Ngopi Yuk" className="w-auto h-7" />
+    // justify-between sudah dihapus, items-center sudah ada
+    <nav className={`${navClasses} px-6 md:px-10 py-3 flex items-center flex-wrap`}>
+
+      {/* --- Bagian Kiri (Brand / Logo) --- */}
+      {/* 👇👇👇 GANTI 'ml-4' MENJADI 'ml-8' DI SINI 👇👇👇 */}
+      <NavLink
+        to="/"
+        className="flex items-center gap-1 text-3xl font-bold font-serif text-white ml-8" // <-- MARGIN KIRI JADI ml-8
+      >
+      {/* 👆👆👆 GANTI 'ml-4' MENJADI 'ml-8' DI SINI 👆👆👆 */}
+        <span>Cafe-in</span> {/* Hanya Teks */}
       </NavLink>
 
-      <button 
+      {/* --- Tombol Toggle Menu Mobile --- */}
+      <button
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="md:hidden p-2 rounded-md hover:bg-black/20"
+        className="md:hidden p-2 rounded-md hover:bg-white/20 text-white ml-auto"
         aria-label="Toggle menu"
       >
-        {isMobileMenuOpen 
-          ? <XMarkIcon className="w-6 h-6" /> 
-          : <Bars3Icon className="w-6 h-6" />
-        }
+        {isMobileMenuOpen ? <XMarkIcon className="w-6 h-6" /> : <Bars3Icon className="w-6 h-6" />}
       </button>
 
-      <div className={`
-          ${isMobileMenuOpen ? 'flex' : 'hidden'} 
-          flex-col md:flex-row md:flex 
-          w-full md:w-auto 
-          items-center gap-4 md:gap-12 
-          mt-4 md:mt-0 
+      {/* --- Bagian Tengah (Pill Nav) --- */}
+      {/* flex-grow sudah ditambahkan */}
+      <div className="hidden md:flex items-center justify-center flex-grow">
+        <div className="relative flex items-center bg-[#1E1E1E] p-1 rounded-full space-x-0">
+
+          {/* Logo Lottie di awal Pill Nav */}
+          <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-transparent">
+            <Lottie
+              animationData={coffeeLoveAnimation}
+              loop={true}
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
+
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path;
+
+            return (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  `relative px-6 py-2.5 rounded-full transition-colors duration-300 font-medium font-montserrat text-sm
+                   ${isActive ? 'text-black' : 'text-white hover:text-gray-200'}`
+                }
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="pill-highlight"
+                    className="absolute inset-0 bg-white rounded-full"
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    style={{ zIndex: 5 }}
+                  />
+                )}
+                <span className="relative z-10">{link.name}</span>
+              </NavLink>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* --- Menu Mobile --- */}
+       <div className={`
+          ${isMobileMenuOpen ? 'flex' : 'hidden'}
+          md:hidden
+          flex-col
+          w-full
+          items-center gap-4
+          mt-4
           text-base font-bold
           ${isMobileMenuOpen && isTransparent ? 'bg-black/50 backdrop-blur-sm rounded-lg py-4' : ''}
           ${isMobileMenuOpen && !isTransparent ? 'bg-[#3b2a22] py-4' : ''}
         `}
       >
-        <NavLink to="/" className={getNavLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
-          Beranda
-        </NavLink>
-        <NavLink to="/explore" className={getNavLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
-          Explore
-        </NavLink>
-        <NavLink to="/tentang-kami" className={getNavLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
-          Tentang Kami
-        </NavLink>
-        
-        {/* <-- LINK "KONTAK" SUDAH DIHAPUS DARI SINI --> */}
-        
+        {navLinks.map((link) => (
+           <NavLink
+             key={link.path + "-mobile"}
+             to={link.path}
+             className={({ isActive }) =>
+               `px-3 py-2 rounded-md w-full text-center
+                ${isActive ? 'bg-orange-700 text-white' : 'text-white hover:bg-white/10'}`
+             }
+             onClick={() => setIsMobileMenuOpen(false)}
+           >
+             {link.name}
+           </NavLink>
+        ))}
       </div>
     </nav>
   );

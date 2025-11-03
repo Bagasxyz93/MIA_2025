@@ -5,7 +5,7 @@ import { FaFacebookF, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 function Footer() {
   return (
     // 1. UBAH DI SINI: ganti 'py-8' menjadi 'py-4'
-    <footer className="bg-[#3b2a22] text-[#fcf4d9] px-10 py-4 flex justify-between items-center font-montagu">
+    <footer className="bg-transparent text-white px-10 py-4 flex justify-between items-center font-montagu">
       
       {/* Link Kebijakan */}
       <div className="flex gap-6 text-sm">

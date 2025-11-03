@@ -1,10 +1,8 @@
 // src/App.jsx
 
 import { Routes, Route } from 'react-router-dom';
-// GUNAKAN ALIAS '@' DI SINI
-// src/App.jsx
 import HomePage from './pages/HomePage.jsx'; 
-import ExplorePage from './pages/ExplorePage.jsx';
+import ExplorePage from './pages/ExplorePage.jsx'; 
 
 function App() {
   return (
