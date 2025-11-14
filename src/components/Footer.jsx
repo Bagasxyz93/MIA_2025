@@ -9,7 +9,6 @@ function Footer() {
       
       {/* Link Kebijakan */}
       <div className="flex gap-6 text-sm">
-        <a href="#" className="hover:underline">Syarat & Ketentuan</a>
         <a href="#" className="hover:underline">Kebijakan Privasi</a>
       </div>
 

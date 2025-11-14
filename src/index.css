@@ -3,45 +3,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tambahkan ini di bawah */
+/* --------------------------------------
+   CUSTOM SWIPER BUTTON STYLE
+--------------------------------------- */
+.mySwiper .swiper-button-prev,
+.mySwiper .swiper-button-next {
+  background: white;
+  color: black;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.mySwiper .swiper-button-prev:after,
+.mySwiper .swiper-button-next:after {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* --------------------------------------
+   SHINY TEXT UTILITIES
+--------------------------------------- */
 @layer utilities {
-  /* Keyframes untuk animasi kilauan dari kiri ke kanan */
+  /* Kilauan bergerak */
   @keyframes shine {
-    0% { background-position: -200% center; } /* Mulai dari jauh di kiri */
-    100% { background-position: 200% center; } /* Berakhir jauh di kanan */
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
   }
 
-  /* Utility class untuk efek shiny */
-/* Utility class untuk teks shiny (dasar putih, kilauan lebih terang) */
-      /* Utility class untuk teks shiny (lebih notice) */
-      .shiny-text {
-        background-image: linear-gradient(
-          90deg,
-          theme('colors.gray.300') 0%,       /* <-- Warna dasar (abu lebih gelap dari sebelumnya) */
-          theme('colors.white') 50%,     /* <-- Putih terang (mulai lebih awal) */
-          theme('colors.white') 75%,     /* <-- Putih terang (berakhir lebih lambat - membuat kilauan lebih lebar) */
-          theme('colors.gray.300') 100%      /* <-- Warna dasar (abu lebih gelap) */
-        );
-        background-size: 200% auto;
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-        /* Kembalikan animasi ke 3 detik agar lebih terlihat */
-        animation: shine 3s linear infinite; /* Durasi jadi 3 detik */
-      } 
+  /* Teks besar shiny */
+  .shiny-text {
+    background-image: linear-gradient(
+      90deg,
+      theme('colors.gray.300') 0%,
+      theme('colors.white') 50%,
+      theme('colors.white') 75%,
+      theme('colors.gray.300') 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+  }
 
-      /* Biarkan .shiny-button-text seperti ini (lebih gelap) */
-      .shiny-button-text {
-        background-image: linear-gradient(
-          90deg,
-          theme('colors.gray.500') 0%,
-          theme('colors.white') 50%,
-          theme('colors.gray.500') 100%
-        );
-        background-size: 200% auto;
-        color: transparent;
-        -webkit-background-clip: text;
-        background-clip: text;
-        animation: shine 3s linear infinite; /* Animasi tombol lebih lambat */
-      }
+  /* Teks shiny untuk button */
+  .shiny-button-text {
+    background-image: linear-gradient(
+      90deg,
+      theme('colors.gray.500') 0%,
+      theme('colors.white') 50%,
+      theme('colors.gray.500') 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+  }
 }

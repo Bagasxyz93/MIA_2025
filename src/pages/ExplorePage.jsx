@@ -1,192 +1,196 @@
 // src/pages/ExplorePage.jsx
 
-import Navbar from '../components/Navbar.jsx'; 
-import Footer from '../components/Footer.jsx'; 
-import { MagnifyingGlassIcon, StarIcon } from '@heroicons/react/24/solid';
-import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar.jsx';
+import Footer from '../components/Footer.jsx';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import { useState } from 'react';
-import { 
-  FaMugHot, FaUtensils, FaTree, FaBreadSlice, FaCoffee, 
-  FaSeedling, FaBookmark, FaRegBookmark
+import { useNavigate } from 'react-router-dom';
+
+import {
+  FaMugHot, FaUtensils, FaTree, FaBreadSlice,
+  FaCoffee, FaBookmark, FaRegBookmark
 } from 'react-icons/fa';
 
-// HAPUS import heroImage from '../assets/hero-bg.jpg';
-// MENGGUNAKAN PATH DARI FOLDER 'public'
-const heroImage = '/hero-bg.jpg'; 
-
-// Path relatif ini sudah benar karena file-file ini masih di src/assets
-import kopiJaya from '../assets/assets-ExplorePage/kopi-jaya.jpg'; 
-import kopiStudio from '../assets/assets-ExplorePage/kopi-studio.jpg'; 
-import kopiKenangan from '../assets/assets-ExplorePage/jokopi.jpg'; 
-import avatarSteven from '../assets/assets-ExplorePage/bahlil.jpg'; 
-import avatarAgus from '../assets/assets-ExplorePage/bahlil.jpg'; 
-import avatarTaher from '../assets/assets-ExplorePage/bahlil.jpg'; 
+// Assets
+import kopiJaya from '../assets/assets-ExplorePage/kopi-jaya.jpg';
+import kopiStudio from '../assets/assets-ExplorePage/kopi-studio.jpg';
+import kopiKenangan from '../assets/assets-ExplorePage/jokopi.jpg';
+import coffeeCup from '../assets/assets-ExplorePage/coffee-cup.jpeg';
 
 function ExplorePage() {
   return (
-    <div className="bg-[#fcf4d9]">
+    <div className="w-full min-h-screen bg-black text-white font-montserrat">
+
       {/* HERO SECTION */}
-      <div className="relative">
-        <Navbar isTransparent={true} />
-        <div
-          className="relative h-[60vh] flex items-center justify-center md:justify-start" 
-          style={{
-            backgroundImage: `url(${heroImage})`, // Ini akan memuat /hero-bg.jpg dari public
-            backgroundSize: 'cover',
-            backgroundPosition: 'center', 
-          }}
-        >
-          <div className="absolute inset-0 bg-black opacity-60"></div>
-          <div className="relative z-10 text-center md:text-left px-6 md:pl-20 md:pr-6"> 
-            <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white font-bold font-raleway mb-4 leading-tight">
-                Temukan coffe shop terbaik<br />dan terjangkau di sekitar mu
-              </h1>
-              <p className="text-base md:text-lg text-white font-montserrat">
-                Jelajahi coffe dengan gaya estetik, nyaman, dan spot kerja
-                terbaik kini tak lagi sulit.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div> 
+      <Navbar isTransparent={true} />
 
-      {/* SEARCH SECTION */}
-      <div className="bg-[#fcf4d9] relative z-20 -mt-8 rounded-t-3xl">
-        <section className="py-6 flex justify-end max-w-7xl mx-auto px-6 md:px-10">
+      <div className="w-full py-20 bg-black text-center">
+        <h1 className="text-6xl font-extrabold tracking-wide">CHILL WITH COFFEE</h1>
 
-          <div className="relative flex items-center w-full max-w-lg h-14 rounded-full bg-white overflow-hidden shadow-[0_15px_30px_-5px_rgba(0,0,0,0.3)]">
-            <div className="grid place-items-center h-full w-16 text-gray-400">
-              <MagnifyingGlassIcon className="w-6 h-6" />
-            </div>
-            <input
-              className="peer h-full w-full outline-none text-base text-gray-700 pr-4 font-montserrat"
-              type="text"
-              id="search"
-              placeholder="Mencari sesuatu?" /> 
-          </div>
-        </section>
-        
-        {/* CARD SECTION */}
-        <section className="max-w-7xl mx-auto mb-16 px-6 md:px-10">
-
-          <h2 className="text-2xl md:text-3xl font-bold font-montserrat text-gray-800 mt-2 mb-4">
-            Spot Pilihan Terbaik Hari Ini
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <SpotCard imgSrc={kopiJaya} title="Kopi Jaya" description="Kopi an untuk kumpul bareng besti nih" address="Jl.Soekarno Hatta"/>
-            <SpotCard imgSrc={kopiStudio} title="Kopi Studio 24" description="Mau ngopi murah??KopiStud solusinya" address="Jl.Soekarno Hatta"/>
-            <SpotCard imgSrc={kopiKenangan} title="Kopi Kenangan" description="Cafe untuk Dating? Disinilah yang terbaik" address="Jl.Soekarno Hatta"/>
-          </div>
-        </section>
-
-        {/* KATEGORI SECTION */}
-        <section className="max-w-7xl mx-auto mb-16 px-6 md:px-10">
-          
-          <h2 className="text-2xl md:text-3xl font-bold font-montserrat text-gray-800 mb-8 text-left">
-            Jelajahi Berbagai Kategori
-          </h2>
-
-          <div className="w-full flex justify-center">
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-8 justify-items-center">
-              <KategoriIcon icon={<FaMugHot />} label="Kafe" />
-              <KategoriIcon icon={<FaUtensils />} label="Kuliner" />
-              <KategoriIcon icon={<FaTree />} label="Outdoors" />
-              <KategoriIcon icon={<FaBreadSlice />} label="Bakery" />
-              <KategoriIcon icon={<FaCoffee />} label="Chill Caffe" />
-              <KategoriIcon icon={<FaSeedling />} label="Bubuk Kopi" />
-              <KategoriIcon icon={<FaBookmark />} label="Kafe Tersimpan" />
-            </div>
-          </div>
-        </section>
-
-        {/* KOMENTAR SECTION */}
-        <section className="max-w-7xl mx-auto mb-12 px-6 md:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <KomentarCard avatarSrc={avatarSteven} name="Steven Bengkel" comment="Wah isinya lengkap dan menghadirkan banyak fitur yang keren serta warna yang unik" />
-            <KomentarCard avatarSrc={avatarAgus} name="Agus Mie Ayam" comment="Banyak Cafe ya ternyata di sekitarku, mantab web nya" />
-            <KomentarCard avatarSrc={avatarTaher} name="Taher Poizy" comment="mksh awn, web mu bnr bnr kek web ini konsep" />
-          </div>
-        </section>
-        <div className="text-center pb-12 px-6 md:px-10">
-          <button className="bg-[#8c4a1b] text-white font-montagu font-bold text-base md:text-lg px-6 md:px-8 py-3 md:py-4 rounded-lg shadow-lg hover:bg-opacity-90 transition-all w-full md:w-auto">
-            Komentar
-          </button>
+        <div className="mt-10 relative w-fit mx-auto">
+          <img src={coffeeCup} className="w-[300px] mx-auto" />
+          <div
+            className="
+              absolute left-1/2 -translate-x-1/2 
+              bottom-[-10px] 
+              w-[220px] h-[20px]
+              bg-white/40 
+              blur-xl 
+              rounded-full
+            "
+          ></div>
         </div>
       </div>
+
+      {/* EXPLORE SECTION */}
+      <div className="w-full bg-white text-black py-16 px-6 md:px-14">
+
+        <div className="flex justify-between items-center">
+          <div>
+            <h2 className="text-3xl font-extrabold">EXPLORE CAFE AROUND YOU</h2>
+            <p className="text-gray-600 mt-1">Explore the best cafes around you</p>
+          </div>
+
+          <div className="flex gap-3">
+            <div className="swiper-button-prev-custom w-12 h-12 border rounded-xl flex items-center justify-center text-black"></div>
+            <div className="swiper-button-next-custom w-12 h-12 border rounded-xl flex items-center justify-center text-black"></div>
+          </div>
+        </div>
+
+        {/* SLIDER */}
+        <div className="mt-10 overflow-visible">
+          <Swiper
+            modules={[Navigation]}
+            navigation={{
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
+            }}
+            spaceBetween={25}
+            slidesPerView={1.2}
+            breakpoints={{
+              640: { slidesPerView: 2.2 },
+              1024: { slidesPerView: 3.2 }
+            }}
+            className="pb-10 overflow-visible"
+          >
+
+            <SwiperSlide>
+              <CafeCard
+                img={kopiJaya}
+                name="Kopi Jaya"
+                rating="★★★★★"
+                id={1}
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <CafeCard
+                img={kopiStudio}
+                name="Kopi Studio"
+                rating="★★★★☆"
+                id={2}
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <CafeCard
+                img={kopiKenangan}
+                name="JoKopi"
+                rating="★★★★★"
+                id={3}
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+
+        <p className="text-gray-600 mt-6">
+          There are many cafes around you, let's continue exploring
+        </p>
+      </div>
+
+      {/* CATEGORY SECTION */}
+      <div className="w-full bg-black text-white py-16 px-6 md:px-14">
+
+        <h2 className="text-3xl font-extrabold">EXPLORE VARIOUS CATEGORIES</h2>
+        <p className="text-gray-400 mt-1">Select the category you want</p>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-10">
+          <CategoryButton icon={<FaMugHot />} label="Cafe Indoor" />
+          <CategoryButton icon={<FaTree />} label="Cafe Outdoor" />
+          <CategoryButton icon={<FaCoffee />} label="Chill Cafe" />
+          <CategoryButton icon={<FaUtensils />} label="Culinary" />
+          <CategoryButton icon={<FaBreadSlice />} label="Bakery" />
+          <CategoryButton icon={<FaBookmark />} label="Saved Cafe" />
+        </div>
+      </div>
+
       <Footer />
     </div>
   );
 }
 
-// --- Komponen Helper (Sudah benar) ---
-const SpotCard = ({ imgSrc, title, description, address, id }) => {
-  const navigate = useNavigate();
+const CafeCard = ({ img, name, rating, id }) => {
   const [saved, setSaved] = useState(false);
-
-  const toggleSave = (e) => {
-    e.stopPropagation(); // supaya klik tombol save tidak ikut membuka halaman detail
-    setSaved(!saved);
-  };
+  const navigate = useNavigate();
 
   return (
     <div
       onClick={() => navigate(`/cafe/${id}`)}
-      className="relative rounded-xl shadow-lg bg-[#3b2a22] text-white font-montserrat transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl cursor-pointer"
+      className="
+        bg-black text-white rounded-3xl p-5 cursor-pointer relative
+        hover:-translate-y-3 hover:shadow-2xl transition-all duration-300
+        w-full 
+        h-[350px] sm:h-[420px] md:h-[450px]
+        overflow-visible
+      "
     >
-      <div className="p-4 relative">
-        {/* Gambar utama */}
-        <img
-          src={imgSrc}
-          alt={title}
-          className="w-full h-48 object-cover rounded-xl mb-4"
-        />
+      {/* GAMBAR */}
+      <img
+        src={img}
+        className="
+          w-full 
+          h-40 sm:h-48 md:h-52 
+          object-cover rounded-2xl
+        "
+      />
 
-        {/* Isi teks */}
-        <h3 className="text-xl md:text-2xl font-bold mb-2">{title}</h3>
-        <p className="text-sm text-[#fcf4d9] mb-1">{description}</p>
-        <p className="text-xs text-[#b49266] mb-3">{address}</p>
+      {/* NAMA */}
+      <h3 className="mt-4 text-lg sm:text-xl font-bold">{name}</h3>
 
-        {/* Rating bintang */}
-        <div className="flex text-yellow-400 mb-8">
-          <StarIcon className="w-5 h-5" />
-          <StarIcon className="w-5 h-5" />
-          <StarIcon className="w-5 h-5" />
-          <StarIcon className="w-5 h-5" />
-          <StarIcon className="w-5 h-5" />
-        </div>
+      {/* RATING */}
+      <p className="text-yellow-500/70 text-sm mt-1">{rating}</p>
 
-        {/* Tombol Save (kanan bawah & lebih besar) */}
-        <button
-          onClick={toggleSave}
-          className="absolute bottom-4 right-4 text-3xl text-white hover:scale-110 transition-transform"
-        >
-          {saved ? <FaBookmark /> : <FaRegBookmark />}
-        </button>
-      </div>
+      {/* TOMBOL SAVE */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setSaved(!saved);
+        }}
+        className="
+          absolute bottom-4 right-4 p-3 rounded-full 
+          bg-white text-black shadow-md text-xl
+        "
+      >
+        {saved ? <FaBookmark className="text-black" /> : <FaRegBookmark className="text-black" />}
+      </button>
     </div>
   );
 };
 
-const KategoriIcon = ({ icon, label }) => (
-  <div className="flex flex-col items-center gap-2 font-montserrat text-gray-700">
-    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#3b2a22] flex items-center justify-center text-2xl md:text-3xl text-white">
-      {icon}
-    </div>
-    <span className="font-bold text-sm md:text-base">{label}</span>
-  </div>
-);
-const KomentarCard = ({ avatarSrc, name, comment }) => (
-  <div className="bg-white rounded-3xl shadow-[0_10px_25px_rgba(0,0,0,0.4)] p-4 md:p-6 flex gap-4 items-start font-montserrat border border-black">
-    <div className="flex-grow"> 
-      <h4 className="font-bold text-base md:text-lg text-gray-800">{name}</h4>
-      <p className="text-gray-600 text-sm my-2">{comment}</p>
-      <div className="flex text-yellow-400">
-        <StarIcon className="w-4 h-4" /> <StarIcon className="w-4 h-4" /> <StarIcon className="w-4 h-4" /> <StarIcon className="w-4 h-4" /> <StarIcon className="w-4 h-4" />
-      </div>
-    </div>
-    <img src={avatarSrc} alt={name} className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover flex-shrink-0" />
-  </div>
-);
+
+
+
+/* -----------------  CATEGORY BUTTON ------------------ */
+
+const CategoryButton = ({ icon, label }) => {
+  return (
+    <button className="border border-white py-4 rounded-xl flex items-center justify-center gap-3 text-lg hover:bg-white hover:text-black transition">
+      {icon} {label}
+    </button>
+  );
+};
 
 export default ExplorePage;
