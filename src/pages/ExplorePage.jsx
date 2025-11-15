@@ -11,14 +11,24 @@ import { useNavigate } from 'react-router-dom';
 
 import {
   FaMugHot, FaUtensils, FaTree, FaBreadSlice,
-  FaCoffee, FaBookmark, FaRegBookmark
+  FaCoffee, FaBookmark, FaRegBookmark,FaArrowLeft, FaArrowRight
 } from 'react-icons/fa';
 
-// Assets
+// Assets kopi
 import kopiJaya from '../assets/assets-ExplorePage/kopi-jaya.jpg';
 import kopiStudio from '../assets/assets-ExplorePage/kopi-studio.jpg';
 import kopiKenangan from '../assets/assets-ExplorePage/jokopi.jpg';
+import lysBakery from '../assets/assets-ExplorePage/fleur-de-lys-bakery.jpg';
+import AADKcoffee from '../assets/assets-ExplorePage/AADK-eat.jpeg';
+import ArayaArcadeCafe from '../assets/assets-ExplorePage/araya-arcade-garden.jpeg';
+import arbanatCafe from '../assets/assets-ExplorePage/arbanat-kitchencafelounge.jpg';
+import CRcafe from '../assets/assets-ExplorePage/kopi-critasena.jpeg';
+import nakoaCafe from '../assets/assets-ExplorePage/nakoa-cafe-indoor.jpeg';
+import paneEpaneCafe from '../assets/assets-ExplorePage/Pane-e-pane.jpg';
+
+// Assets cup
 import coffeeCup from '../assets/assets-ExplorePage/coffee-cup.jpeg';
+import { address } from 'framer-motion/client';
 
 function ExplorePage() {
   return (
@@ -55,8 +65,27 @@ function ExplorePage() {
           </div>
 
           <div className="flex gap-3">
-            <div className="swiper-button-prev-custom w-12 h-12 border rounded-xl flex items-center justify-center text-black"></div>
-            <div className="swiper-button-next-custom w-12 h-12 border rounded-xl flex items-center justify-center text-black"></div>
+
+            <div
+              className="
+                swiper-button-prev-custom 
+                w-12 h-12 border rounded-xl flex items-center justify-center
+                bg-white text-black
+              "
+            >
+              <FaArrowLeft size={18} />
+            </div>
+
+            
+            <div
+              className="
+                swiper-button-next-custom 
+                w-12 h-12 border rounded-xl flex items-center justify-center
+                bg-black text-white
+              "
+            >
+              <FaArrowRight size={18} />
+            </div>
           </div>
         </div>
 
@@ -81,6 +110,7 @@ function ExplorePage() {
               <CafeCard
                 img={kopiJaya}
                 name="Kopi Jaya"
+                address = "Jl. Pajajaran No.25D, Klojen, Kec. Klojen, Kota Malang"
                 rating="★★★★★"
                 id={1}
               />
@@ -89,6 +119,7 @@ function ExplorePage() {
             <SwiperSlide>
               <CafeCard
                 img={kopiStudio}
+                address = "Jl. Laksda Adi Sucipto No.193, Blimbing, Kec. Blimbing, Kota Malang"
                 name="Kopi Studio"
                 rating="★★★★☆"
                 id={2}
@@ -98,9 +129,30 @@ function ExplorePage() {
             <SwiperSlide>
               <CafeCard
                 img={kopiKenangan}
+                address = "Jl. Jakarta No.26, Penanggungan, Kec. Klojen, Kota Malang"
                 name="JoKopi"
                 rating="★★★★★"
                 id={3}
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <CafeCard
+                img={lysBakery}
+                address = "Jl. Kawi Atas No.21, Gading Kasri, Kec. Klojen, Kota Malang"
+                name="de Lys Patisserie"
+                rating="★★★★☆"
+                id={4}
+              />
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <CafeCard
+                img={AADKcoffee}
+                address = " Jalan Raya, Ngelo, Tlogomas, Kec. Lowokwaru, Kota Malang"
+                name="AADK Eat & Coffee"
+                rating="★★★★★"
+                id={5}
               />
             </SwiperSlide>
           </Swiper>
@@ -132,7 +184,7 @@ function ExplorePage() {
   );
 }
 
-const CafeCard = ({ img, name, rating, id }) => {
+const CafeCard = ({ img, name,address, rating, id }) => {
   const [saved, setSaved] = useState(false);
   const navigate = useNavigate();
 
@@ -159,6 +211,9 @@ const CafeCard = ({ img, name, rating, id }) => {
 
       {/* NAMA */}
       <h3 className="mt-4 text-lg sm:text-xl font-bold">{name}</h3>
+
+      {/* ALAMAT */}
+      <p className="text-gray-400 text-sm mt-1">{address}</p>
 
       {/* RATING */}
       <p className="text-yellow-500/70 text-sm mt-1">{rating}</p>
