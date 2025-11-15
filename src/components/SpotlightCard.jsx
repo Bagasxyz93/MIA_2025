@@ -1,4 +1,3 @@
-// src/components/SpotlightCard.jsx
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
@@ -29,7 +28,6 @@ const SpotlightCard = ({ children }) => {
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
-      // 👇👇👇 GANTI 'bg-[#2a1b15]' MENJADI 'bg-transparent' DI SINI 👇👇👇
       className="relative w-full h-full p-6 bg-transparent rounded-2xl shadow-lg overflow-hidden"
     >
       {/* Efek Sinar (Spotlight) */}
@@ -39,7 +37,7 @@ const SpotlightCard = ({ children }) => {
           background: spotlightBackground,
         }}
       />
-      {/* Konten Kartu */}
+      {/* CARD */}
       <div className="relative z-10 text-white">
         {children}
       </div>

@@ -1,9 +1,8 @@
-// src/App.jsx
-
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage.jsx'; 
 import ExplorePage from './pages/ExplorePage.jsx'; 
 import MoreCafePage from "./pages/MoreCafePage.jsx";
+import CafeDetailPage from "./pages/CafeDetailPage.jsx";
 
 
 function App() {
@@ -12,7 +11,7 @@ function App() {
       <Route path="/" element={<HomePage />} /> 
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/more-cafes" element={<MoreCafePage />} />
-      {/* Rute lain bisa ditambahkan di sini */}
+      <Route path="/cafe/:id" element={<CafeDetailPage />} /> 
     </Routes>
   );
 }

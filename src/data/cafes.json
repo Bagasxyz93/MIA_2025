@@ -1,0 +1,360 @@
+[
+  {
+    "id": 1,
+    "name": "Kopi Jaya",
+    "address": "Jl. Kepundung No.32, Bareng, Kec. Klojen, Kota Malang",
+    "rating": "★★★★★",
+    "description": "Kopi Jaya adalah cafe cozy dengan suasana industrial modern.",
+    "img": "/cafes/kopi-jaya.jpg",
+    "categories": ["Cafe Indoor", "Chill Cafe"],
+    "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75181.81876869779!2d112.54542055169162!3d-7.972305578306651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd62905dc55aeb9%3A0x7f5416749e54b16f!2stoko%20kopi%20jaya%2C%20klojen!5e0!3m2!1sid!2sid!4v1763232532764!5m2!1sid!2sid",
+    "menuList": [
+      {
+        "name": "Latte",
+        "img": "/menus/latte.jpg",
+        "description": "Latte creamy dengan rasa lembut khas Kopi Jaya.",
+        "rating": 5.0
+      },
+      {
+        "name": "Cappuccino",
+        "img": "/menus/cappuccino.jpg",
+        "description": "Cappuccino klasik dengan foam tebal dan aroma kuat.",
+        "rating": 5.0
+      },
+      {
+        "name": "Americano",
+        "img": "/menus/americano.jpg",
+        "description": "Americano dengan rasa pahit ringan dan segar.",
+        "rating": 5.0
+      },
+      {
+        "name": "Croissant",
+        "img": "/menus/croissant.jpg",
+        "description": "Croissant butter lembut dan flaky.",
+        "rating": 5.0
+      }
+    ]
+  },
+
+  {
+    "id": 2,
+    "name": "Kopi Studio",
+    "address": "Jl. Laksda Adi Sucipto No.193, Blimbing, Kec. Blimbing, Kota Malang",
+    "rating": "★★★★☆",
+    "description": "Kopi Studio cocok untuk mahasiswa yang ingin kerja sambil ngopi.",
+    "img": "/cafes/kopi-studio.jpg",
+    "categories": ["Cafe Outdoor"],
+    "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.526146718643!2d112.64513837796926!3d-7.944453671658001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6291d6abaea3b%3A0x8c25eec8210922d8!2sKopi%20Studio%2024!5e0!3m2!1sid!2sid!4v1763232637888!5m2!1sid!2sid",
+    "menuList": [
+      {
+        "name": "Espresso",
+        "img": "/menus/espresso.jpg",
+        "description": "Espresso pekat dengan aroma kacang panggang.",
+        "rating": 4.0
+      },
+      {
+        "name": "Matcha Latte",
+        "img": "/menus/matcha-latte.jpg",
+        "description": "Matcha creamy dengan rasa manis lembut.",
+        "rating": 4.0
+      },
+      {
+        "name": "Mocha",
+        "img": "/menus/mocha.jpg",
+        "description": "Mocha cokelat manis dipadukan dengan espresso.",
+        "rating": 4.0
+      },
+      {
+        "name": "Tostada",
+        "img": "/menus/tostada.jpg",
+        "description": "Roti panggang gurih khas Kopi Studio.",
+        "rating": 4.0
+      }
+    ]
+  },
+
+  {
+    "id": 3,
+    "name": "JoKopi",
+    "address": "Jl. Jakarta No.26, Penanggungan, Kec. Klojen, Kota Malang",
+    "rating": "★★★★★",
+    "description": "Cafe modern dengan konsep minimalist industrial.",
+    "img": "/cafes/jokopi.jpg",
+    "categories": ["Cafe Indoor", "Chill Cafe"],
+    "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.347779712358!2d112.62012197484617!3d-7.962964792061796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd62951c55de7c5%3A0x1d511a16d26bb497!2sJOKOPI%20-%20Malang!5e0!3m2!1sid!2sid!4v1763232721215!5m2!1sid!2sid",
+    "menuList": [
+      {
+        "name": "Caramel Latte",
+        "img": "/menus/caramel-latte.jpg",
+        "description": "Caramel latte manis dan creamy.",
+        "rating": 5.0
+      },
+      {
+        "name": "Hazelnut Latte",
+        "img": "/menus/hazelnut-latte.jpg",
+        "description": "Hazelnut latte wangi dan lembut.",
+        "rating": 5.0
+      },
+      {
+        "name": "Brownies",
+        "img": "/menus/brownies.jpg",
+        "description": "Brownies cokelat lembut dan manis.",
+        "rating": 5.0
+      },
+      {
+        "name": "Roti Bakar",
+        "img": "/menus/rotibakar.jpg",
+        "description": "Roti bakar manis dengan topping sesuai pilihan.",
+        "rating": 5.0
+      }
+    ]
+  },
+
+  {
+    "id": 4,
+    "name": "de Lys Patisserie",
+    "address": "Jl. Kawi Atas No.21, Gading Kasri, Kec. Klojen, Kota Malang",
+    "rating": "★★★★☆",
+    "description": "Cafe bakery dengan pastry premium dan suasana mewah.",
+    "img": "/cafes/fleur-de-lys-bakery.jpg",
+    "categories": ["Bakery", "Culinary"],
+    "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15805.238562692855!2d112.60184154518407!3d-7.966917357041967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e788357741760fd%3A0x7e03e8bc5de944bb!2sde%20Lys%20Patisserie%20and%20Coffee!5e0!3m2!1sid!2sid!4v1763232812095!5m2!1sid!2sid",
+    "menuList": [
+      {
+        "name": "Croissant",
+        "img": "/menus/croissant.jpg",
+        "description": "Croissant premium dengan butter Eropa.",
+        "rating": 4.0
+      },
+      {
+        "name": "Macarons",
+        "img": "/menus/macarons.jpg",
+        "description": "Macaron warna-warni dengan rasa autentik.",
+        "rating": 4.0
+      },
+      {
+        "name": "Tea",
+        "img": "/menus/tea.jpg",
+        "description": "Teh premium dengan aroma fresh.",
+        "rating": 4.0
+      },
+      {
+        "name": "Mocha",
+        "img": "/menus/mocha.jpg",
+        "description": "Mocha manis dengan aroma cokelat.",
+        "rating": 4.0
+      }
+    ]
+  },
+
+  {
+    "id": 5,
+    "name": "AADK Eat & Coffee",
+    "address": "Jalan Raya, Ngelo, Tlogomas, Kec. Lowokwaru, Kota Malang",
+    "rating": "★★★★★",
+    "description": "Cafe outdoor & indoor dengan area luas dan nyaman.",
+    "img": "/cafes/AADK-eat.jpeg",
+    "categories": ["Cafe Indoor", "Culinary"],
+    "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.6404615044635!2d112.60067297484586!3d-7.932567392091304!2m3!1f0!2f0!3f0!3m2!i1024!2i768!4f13.1!3m3!1m2!1s0x2e788331110444d7%3A0xf33e415d5a80ea51!2sADA%20APA%20DENGAN%20KOPI%20-%20AADK%20TLOGOMAS!5e0!3m2!1sid!2sid!4v1763232888381!5m2!1sid!2sid",
+    "menuList": [
+      {
+        "name": "Cappuccino",
+        "img": "/menus/cappuccino.jpg",
+        "description": "Cappuccino lembut dengan foam creamy.",
+        "rating": 5.0
+      },
+      {
+        "name": "Es Kopi Susu",
+        "img": "/menus/eskopisusu.jpg",
+        "description": "Es kopi susu manis dengan gula aren.",
+        "rating": 5.0
+      },
+      {
+        "name": "Waffle",
+        "img": "/menus/waffle.jpg",
+        "description": "Waffle hangat crispy di luar lembut di dalam.",
+        "rating": 5.0
+      },
+      {
+        "name": "Sandwich",
+        "img": "/menus/sandwich.jpg",
+        "description": "Sandwich gurih kaya isian.",
+        "rating": 5.0
+      }
+    ]
+  },
+  {
+  "id": 6,
+  "name": "Araya Arcade Garden",
+  "address": "Mansion hill, Genitri, Tirtomoyo, Pakis, Malang Regency",
+  "rating": "★★★★★",
+  "description": "Cafe outdoor dengan taman luas, ambience adem, dan vibes aesthetic.",
+  "img": "/cafes/araya-arcade-garden.jpeg",
+  "categories": ["Cafe Outdoor"],
+  "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.5624022328248!2d112.6809406748458!3d-7.940685792083405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6290caf13a73b%3A0x7ab8be12da8d0816!2sAraya%20Arcade%20Garden%20by%20Rustic%20Market!5e0!3m2!1sid!2sid!4v1763232987665!5m2!1sid!2sid",
+  "menuList": [
+    {
+      "name": "Latte",
+      "img": "/menus/latte.jpg",
+      "description": "Latte creamy dengan rasa lembut.",
+      "rating": 5.0
+    },
+    {
+      "name": "Affogato",
+      "img": "/menus/affogato.jpg",
+      "description": "Es krim vanilla dengan espresso pekat.",
+      "rating": 5.0
+    },
+    {
+      "name": "Cookies",
+      "img": "/menus/cookies.jpg",
+      "description": "Cookies chewy dengan aroma butter.",
+      "rating": 5.0
+    },
+    {
+      "name": "Pizza",
+      "img": "/menus/pizza.jpg",
+      "description": "Pizza tipis renyah khas Araya.",
+      "rating": 5.0
+    }
+  ]
+},
+  {
+  "id": 7,
+  "name": "Arbanat Kitchen Café Lounge",
+  "address": "Jl. Terusan Dieng No.4-6, Pisang Candi, Kec. Sukun, Kota Malang",
+  "rating": "★★★★☆",
+  "description": "Cafe aesthetic vibes fancy, cocok buat foto dan nongkrong lama.",
+  "img": "/cafes/arbanat-kitchencafelounge.jpg",
+  "categories": ["Cafe Indoor", "Chill Cafe", "Culinary"],
+  "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.258677776506!2d112.60455857484642!3d-7.972195892052828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78828ff02a1493%3A0x122f370bc58dee11!2sThe%20Arbanat%20Kitchen%20Cafe%20Lounge!5e0!3m2!1sid!2sid!4v1763233129339!5m2!1sid!2sid",
+  "menuList": [
+    {
+      "name": "Spaghetti",
+      "img": "/menus/spaghetti.jpg",
+      "description": "Spaghetti creamy dengan bumbu gurih.",
+      "rating": 4.0
+    },
+    {
+      "name": "Mojito",
+      "img": "/menus/mojito.jpg",
+      "description": "Minuman segar dengan lemon dan mint.",
+      "rating": 4.0
+    },
+    {
+      "name": "Latte",
+      "img": "/menus/latte.jpg",
+      "description": "Latte lembut dengan foam ringan.",
+      "rating": 4.0
+    },
+    {
+      "name": "Chicken Steak",
+      "img": "/menus/chicken-steak.jpg",
+      "description": "Steak ayam juicy dengan saus special.",
+      "rating": 4.0
+    }
+  ]
+},
+  {
+  "id": 8,
+  "name": "CR Coffee",
+  "address": "Jl. Kahuripan No.1, Klojen, Kota Malang",
+  "rating": "★★★★☆",
+  "description": "Hidden gem dengan suasana adem dan area outdoor asri.",
+  "img": "/cafes/kopi-critasena.jpeg",
+  "categories": ["Cafe Outdoor", "Culinary"],
+  "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.223786486829!2d112.62905817484629!3d-7.975807792049345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629b758cab76d%3A0x75b892128321c6a8!2scritasena!5e0!3m2!1sid!2sid!4v1763233184305!5m2!1sid!2sid",
+  "menuList": [
+    {
+      "name": "Americano",
+      "img": "/menus/americano.jpg",
+      "description": "Americano ringan dengan aftertaste segar.",
+      "rating": 4.0
+    },
+    {
+      "name": "Matcha",
+      "img": "/menus/matcha-latte.jpg",
+      "description": "Matcha creamy dengan sweetness pas.",
+      "rating": 4.0
+    },
+    {
+      "name": "Croissant",
+      "img": "/menus/croissant.jpg",
+      "description": "Croissant flaky dengan butter wangi.",
+      "rating": 4.0
+    },
+    {
+      "name": "Sandwich",
+      "img": "/menus/sandwich.jpg",
+      "description": "Sandwich isi sayur dan daging lengkap.",
+      "rating": 4.0
+    }
+  ]
+},
+  {
+  "id": 9,
+  "name": "Nakoa Coffee",
+  "address": "Jl. Bondowoso No.14, Klojen, Kota Malang",
+  "rating": "★★★★★",
+  "description": "Cafe kekinian dengan harga ramah dan tempat luas.",
+  "img": "/cafes/nakoa-cafe-indoor.jpeg",
+  "categories": ["Cafe Outdoor"],
+  "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63220.84178670671!2d112.53996404863281!3d-7.967645600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7883da482c6487%3A0xaf2c7808792e4e52!2sNakoa%20Cafe%20Bondowoso!5e0!3m2!1sid!2sid!4v1763230430937!5m2!1sid!2sid",
+  "menuList": [
+    {
+      "name": "Es Kopi Susu Gula Aren",
+      "img": "/menus/aren.jpg",
+      "description": "Signature drink manis creamy.",
+      "rating": 5.0
+    },
+    {
+      "name": "Chocolate",
+      "img": "/menus/chocolate.jpg",
+      "description": "Cokelat creamy dengan rasa rich.",
+      "rating": 5.0
+    },
+    {
+      "name": "Toast",
+      "img": "/menus/toast.jpg",
+      "description": "Roti panggang lembut dengan topping.",
+      "rating": 5.0
+    }
+  ]
+},
+  {
+  "id": 10,
+  "name": "Pane e Pane",
+  "address": "Jl. Kinibalu No.1, Karangbesuki, Kota Malang",
+  "rating": "★★★★★",
+  "description": "Cafe roti artisan dan kopi dengan bahan premium.",
+  "img": "/cafes/Pane-e-pane.jpg",
+  "categories": ["Bakery", "Chill Cafe"],
+  "maps": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.301250739495!2d112.60831797484622!3d-7.967786592057099!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7883b1ee88f51d%3A0x7825e969064b9401!2sPane%20%C3%A8%20pane!5e0!3m2!1sid!2sid!4v1763233295494!5m2!1sid!2sid",
+  "menuList": [
+    {
+      "name": "Pastry",
+      "img": "/menus/pastry.jpg",
+      "description": "Pastry renyah dengan isian lembut.",
+      "rating": 5.0
+    },
+    {
+      "name": "Latte",
+      "img": "/menus/latte.jpg",
+      "description": "Latte lembut dengan foam creamy.",
+      "rating": 5.0
+    },
+    {
+      "name": "Cappuccino",
+      "img": "/menus/cappuccino.jpg",
+      "description": "Cappuccino dengan aroma kuat.",
+      "rating": 5.0
+    },
+    {
+      "name": "Pizza Roti",
+      "img": "/menus/pizzaroti.jpg",
+      "description": "Pizza roti unik khas Pane e Pane.",
+      "rating": 5.0
+    }
+  ]
+}
+]

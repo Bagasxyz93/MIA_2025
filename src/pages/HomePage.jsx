@@ -1,34 +1,15 @@
-// src/pages/HomePage.jsx
-
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import SpotlightCard from '../components/SpotlightCard.jsx';
-
-// Impor ikon dari library (ini sudah benar)
 import { MapPinIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { FaUtensils } from 'react-icons/fa'; 
 
-// ==========================================================
-// ==== 👇👇👇 PERBAIKAN PATH GAMBAR ADA DI SINI 👇👇👇 ====
-// ==========================================================
-// HAPUS impor 'coffeeSplashImage' dari ../assets-HomePage
-
-// GUNAKAN PATH DARI FOLDER 'public/'
 const coffeeSplashImage = '/kopi-muncrat.png'; 
-// ==========================================================
-// ==== SELESAI PERBAIKAN ====
-// ==========================================================
-
-// Hapus impor ikon PNG
-// import iconRekomendasi from '../assets-HomePage/icon-rekomendasi.png';
-// import iconKuliner from '../assets-HomePage/icon-kuliner.png';
-// import iconCoworking from '../assets-HomePage/icon-coworking.png'; 
 
 const rotatingWords = ["Coffee Shop", "Kafe Hits", "Tempat Santai", "Spot WFC"];
 
-// Data kartu fitur menggunakan ikon dari library (ini sudah benar)
 const featureCardsData = [
   {
     icon: MapPinIcon,
@@ -141,7 +122,6 @@ function HomePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              {/* Gambar akan diambil dari 'public/kopi-muncrat.png' */}
               <img src={coffeeSplashImage} alt="Coffee Splash" className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"/>
             </motion.div>
           </div>
