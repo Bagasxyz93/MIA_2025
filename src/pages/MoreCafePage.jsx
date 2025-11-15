@@ -1,16 +1,16 @@
 import CafeCard from "../components/CafeCard";
-import { FaArrowLeft, FaChevronDown } from "react-icons/fa";
+import { FaArrowLeft, FaMugHot, FaTree, FaCoffee, FaUtensils, FaBreadSlice } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import cafes from "../data/cafes.json";
 
-// Semua kategori
+// Semua kategori beserta ikon
 const allCategories = [
-  "Cafe Indoor",
-  "Cafe Outdoor",
-  "Chill Cafe",
-  "Culinary",
-  "Bakery"
+  { label: "Cafe Indoor", icon: <FaMugHot /> },
+  { label: "Cafe Outdoor", icon: <FaTree /> },
+  { label: "Chill Cafe", icon: <FaCoffee /> },
+  { label: "Culinary", icon: <FaUtensils /> },
+  { label: "Bakery", icon: <FaBreadSlice /> },
 ];
 
 export default function MoreCafePage() {
@@ -20,7 +20,6 @@ export default function MoreCafePage() {
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchText, setSearchText] = useState("");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     if (passedCategory) {
@@ -28,8 +27,12 @@ export default function MoreCafePage() {
     }
   }, [passedCategory]);
 
-  const toggleDropdown = () => setDropdownOpen((prev) => !prev);
+  // Klik kategori → pilih atau unselect
+  const handleCategoryClick = (cat) => {
+    setSelectedCategory((prev) => (prev === cat ? "" : cat));
+  };
 
+  // Filter cafe
   const filteredCafes = cafes.filter((cafe) => {
     const nameMatch = cafe.name.toLowerCase().includes(searchText.toLowerCase());
     const categoryMatch =
@@ -61,43 +64,30 @@ export default function MoreCafePage() {
         className="w-full p-4 border border-gray-300 rounded-xl mb-4 shadow-sm focus:ring-2 focus:ring-black focus:outline-none"
       />
 
-      {/* DROPDOWN KATEGORI */}
-      <div className="relative mb-6">
-        <button
-          onClick={toggleDropdown}
-          className="w-full flex justify-between items-center p-4 border border-gray-300 rounded-xl shadow-sm bg-white hover:bg-gray-100 transition"
-        >
-          {selectedCategory || "Select Category"}
-          <FaChevronDown className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
-        </button>
-
-        {dropdownOpen && (
-          <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-xl shadow-lg max-h-60 overflow-auto">
-            <button
-              onClick={() => { setSelectedCategory(""); setDropdownOpen(false); }}
-              className="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
-            >
-              All Categories
-            </button>
-            {allCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => { setSelectedCategory(cat); setDropdownOpen(false); }}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        )}
-
-        {/* Tampilkan kategori yang dipilih */}
-        {selectedCategory && (
-          <p className="text-gray-700 mt-2">
-            Selected Category: <span className="font-semibold">{selectedCategory}</span>
-          </p>
-        )}
+      {/* CATEGORY BUTTONS DENGAN ICON */}
+      <div className="flex flex-wrap gap-3 mb-6">
+        {allCategories.map((cat) => (
+          <button
+            key={cat.label}
+            onClick={() => handleCategoryClick(cat.label)}
+            className={`flex items-center gap-2 px-5 py-2 rounded-full font-medium transition ${
+              selectedCategory === cat.label
+                ? "bg-gray-400 text-white"
+                : "bg-black text-white hover:bg-gray-700"
+            }`}
+          >
+            {cat.icon}
+            {cat.label}
+          </button>
+        ))}
       </div>
+
+      {/* Tampilkan kategori yang dipilih */}
+      {selectedCategory && (
+        <p className="text-gray-700 mb-4">
+          Selected Category: <span className="font-semibold">{selectedCategory}</span>
+        </p>
+      )}
 
       {/* LIST CAFE */}
       <div className="pb-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
