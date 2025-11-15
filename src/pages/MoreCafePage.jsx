@@ -1,121 +1,114 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import CafeCard from "../components/CafeCard";
-import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { FaArrowLeft, FaChevronDown } from "react-icons/fa";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import cafes from "../data/cafes.json";
 
-import kopiJaya from '../assets/assets-ExplorePage/kopi-jaya.jpg';
-import kopiStudio from '../assets/assets-ExplorePage/kopi-studio.jpg';
-import kopiKenangan from '../assets/assets-ExplorePage/jokopi.jpg';
-import lysBakery from '../assets/assets-ExplorePage/fleur-de-lys-bakery.jpg';
-import AADKcoffee from '../assets/assets-ExplorePage/AADK-eat.jpeg';
-import ArayaArcadeCafe from '../assets/assets-ExplorePage/araya-arcade-garden.jpeg';
-import arbanatCafe from '../assets/assets-ExplorePage/arbanat-kitchencafelounge.jpg';
-import CRcafe from '../assets/assets-ExplorePage/kopi-critasena.jpeg';
-import nakoaCafe from '../assets/assets-ExplorePage/nakoa-cafe-indoor.jpeg';
-import paneEpaneCafe from '../assets/assets-ExplorePage/Pane-e-pane.jpg';
+// Semua kategori
+const allCategories = [
+  "Cafe Indoor",
+  "Cafe Outdoor",
+  "Chill Cafe",
+  "Culinary",
+  "Bakery"
+];
 
 export default function MoreCafePage() {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const passedCategory = state?.category || "";
+
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    if (passedCategory) {
+      setSelectedCategory(passedCategory);
+    }
+  }, [passedCategory]);
+
+  const toggleDropdown = () => setDropdownOpen((prev) => !prev);
+
+  const filteredCafes = cafes.filter((cafe) => {
+    const nameMatch = cafe.name.toLowerCase().includes(searchText.toLowerCase());
+    const categoryMatch =
+      !selectedCategory || cafe.categories.includes(selectedCategory);
+    return nameMatch && categoryMatch;
+  });
 
   return (
-    <div className="bg-white text-black min-h-screen">
-      <Navbar />
+    <div className="bg-white text-black min-h-screen px-6 md:px-14 pt-10">
 
-      {/* HEADER */}
-      <div className="px-6 md:px-14 pt-24">
+      {/* BACK BUTTON */}
+      <button
+        onClick={() => navigate(-1)}
+        className="flex items-center gap-3 text-white bg-black px-6 py-3 rounded-xl text-lg font-bold shadow-lg hover:opacity-80 transition mb-6"
+      >
+        <FaArrowLeft size={20} /> Back
+      </button>
+
+      {/* TITLE */}
+      <h1 className="text-4xl font-extrabold mb-1">Explore Cafes</h1>
+      <p className="text-gray-600 mb-6">Find the best cafe for your mood</p>
+
+      {/* SEARCH BAR */}
+      <input
+        type="text"
+        placeholder="Search cafe..."
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
+        className="w-full p-4 border border-gray-300 rounded-xl mb-4 shadow-sm focus:ring-2 focus:ring-black focus:outline-none"
+      />
+
+      {/* DROPDOWN KATEGORI */}
+      <div className="relative mb-6">
         <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-black mb-6 hover:opacity-70 transition"
+          onClick={toggleDropdown}
+          className="w-full flex justify-between items-center p-4 border border-gray-300 rounded-xl shadow-sm bg-white hover:bg-gray-100 transition"
         >
-            <FaArrowLeft size={18} />
-            Back
+          {selectedCategory || "Select Category"}
+          <FaChevronDown className={`transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
         </button>
 
-        <h1 className="text-3xl font-extrabold">MORE CAFES</h1>
-        <p className="text-gray-600 mt-1">Discover the best cafes around you</p>
-        </div>
+        {dropdownOpen && (
+          <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-xl shadow-lg max-h-60 overflow-auto">
+            <button
+              onClick={() => { setSelectedCategory(""); setDropdownOpen(false); }}
+              className="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
+            >
+              All Categories
+            </button>
+            {allCategories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => { setSelectedCategory(cat); setDropdownOpen(false); }}
+                className="w-full text-left px-4 py-2 hover:bg-gray-100 transition"
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
 
-
-      {/* GRID LIST */}
-      <div className="px-6 md:px-14 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <CafeCard
-            img={kopiJaya}
-            name="Kopi Jaya"
-            address = "Jl. Pajajaran No.25D, Klojen, Kec. Klojen, Kota Malang"
-            rating="★★★★★"
-            id={1}                    
-        />
-
-        <CafeCard
-            img={kopiStudio}
-            address = "Jl. Laksda Adi Sucipto No.193, Blimbing, Kec. Blimbing, Kota Malang"
-            name="Kopi Studio"
-            rating="★★★★☆"
-            id={2}
-        />
-
-        <CafeCard
-            img={kopiKenangan}
-            address = "Jl. Jakarta No.26, Penanggungan, Kec. Klojen, Kota Malang"
-            name="JoKopi"
-            rating="★★★★★"
-            id={3}
-        />
-
-        <CafeCard
-            img={lysBakery}
-            name="de Lys Patisserie"
-            address="Jl. Kawi Atas No.21, Klojen, Kota Malang"
-            rating="★★★★☆"
-            id={4}
-        />
-
-        <CafeCard
-            img={AADKcoffee}
-            address = " Jalan Raya, Ngelo, Tlogomas, Kec. Lowokwaru, Kota Malang"
-            name="AADK Eat & Coffee"
-            rating="★★★★★"
-            id={5}
-        />
-
-        <CafeCard
-            img={ArayaArcadeCafe}
-            name="Araya Arcade Garden"
-            address="Mansion hill, Genitri, Tirtomoyo, Pakis, Kabupaten Malang"
-            rating="★★★★☆"
-            id={6}
-        />
-
-        <CafeCard
-            img={arbanatCafe}
-            name="The Arbanat Kitchen Cafe Lounge"
-            address="Jl. Terusan Dieng No.4-6, Pisang Candi, Kec. Sukun, Kota Malang"
-            rating="★★★★★"
-            id={7}
-        />
-
-        <CafeCard
-            img={CRcafe}
-            name="Critasena Cafe"
-            address="Jl. Kahuripan No.1, Klojen, Kec. Klojen, Kota Malang"
-            rating="★★★★★"
-            id={8}
-        />
-
-        <CafeCard
-            img={nakoaCafe}
-            name="Nakoa Cafe (Bondowoso)"
-            address="Jl. Bondowoso No.14, Gading Kasri, Kec. Klojen, Kota Malang"
-            rating="★★★★☆"
-            id={9}
-        />
-
-
-        {/* Kamu bisa tambah cafe lainnya di sini */}
+        {/* Tampilkan kategori yang dipilih */}
+        {selectedCategory && (
+          <p className="text-gray-700 mt-2">
+            Selected Category: <span className="font-semibold">{selectedCategory}</span>
+          </p>
+        )}
       </div>
 
-      <Footer />
+      {/* LIST CAFE */}
+      <div className="pb-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredCafes.length > 0 ? (
+          filteredCafes.map((cafe) => <CafeCard key={cafe.id} {...cafe} />)
+        ) : (
+          <p className="col-span-full text-center text-gray-600 text-lg mt-10">
+            Café not found
+          </p>
+        )}
+      </div>
     </div>
   );
 }

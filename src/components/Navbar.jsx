@@ -1,5 +1,3 @@
-// src/components/Navbar.jsx
-
 import { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
@@ -12,7 +10,7 @@ function Navbar({ isTransparent = false }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Note: About Us tidak punya path, hanya scrollTo
+  
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Explore", path: "/explore" },
@@ -24,22 +22,20 @@ function Navbar({ isTransparent = false }) {
     : 'bg-[#3b2a22] text-[#fcf4d9] shadow-md';
 
   const handleAboutClick = (scrollTo) => {
-    // Tutup menu mobile kalau terbuka
+    
     setIsMobileMenuOpen(false);
-
-    // Jika sudah di /explore, scroll langsung
     if (location.pathname === '/explore') {
       setTimeout(() => {
         document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50); // sedikit delay untuk memastikan layout ready
+      }, 50); 
       return;
     }
 
-    // Jika belum di /explore, navigasi dulu, lalu scroll setelah delay
+    
     navigate('/explore');
     setTimeout(() => {
       document.getElementById(scrollTo)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 300); // 300ms cukup untuk render halaman Explore
+    }, 300); 
   };
 
   return (
@@ -75,11 +71,8 @@ function Navbar({ isTransparent = false }) {
           </div>
 
           {navLinks.map((link) => {
-            // untuk pengecekan active: gunakan pathname saja (split ? tidak perlu karena kita tidak pakai query)
             const linkBasePath = link.path ?? null;
             const isActive = linkBasePath ? (location.pathname === linkBasePath) : false;
-
-            // Jika link.path ada -> render sebagai NavLink (dapat active)
             if (link.path) {
               return (
                 <NavLink
@@ -102,8 +95,6 @@ function Navbar({ isTransparent = false }) {
                 </NavLink>
               );
             }
-
-            // Jika link.path == null -> tombol scroll (About Us)
             return (
               <button
                 key={link.name}
@@ -141,7 +132,7 @@ function Navbar({ isTransparent = false }) {
             );
           }
 
-          // About Us pada mobile: tombol yang menavigasi + scroll
+          // About Us pada mobile
           return (
             <button
               key={link.name + "-mobile"}

@@ -1,5 +1,3 @@
-// src/pages/ExplorePage.jsx
-
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import { Navigation } from 'swiper/modules';
@@ -11,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import CafeCard from "../components/CafeCard";
+import cafes from "../data/cafes.json";
+
 
 
 
@@ -19,21 +19,9 @@ import {
   FaCoffee, FaBookmark, FaRegBookmark,FaArrowLeft, FaArrowRight
 } from 'react-icons/fa';
 
-// Assets kopi
-import kopiJaya from '../assets/assets-ExplorePage/kopi-jaya.jpg';
-import kopiStudio from '../assets/assets-ExplorePage/kopi-studio.jpg';
-import kopiKenangan from '../assets/assets-ExplorePage/jokopi.jpg';
-import lysBakery from '../assets/assets-ExplorePage/fleur-de-lys-bakery.jpg';
-import AADKcoffee from '../assets/assets-ExplorePage/AADK-eat.jpeg';
-import ArayaArcadeCafe from '../assets/assets-ExplorePage/araya-arcade-garden.jpeg';
-import arbanatCafe from '../assets/assets-ExplorePage/arbanat-kitchencafelounge.jpg';
-import CRcafe from '../assets/assets-ExplorePage/kopi-critasena.jpeg';
-import nakoaCafe from '../assets/assets-ExplorePage/nakoa-cafe-indoor.jpeg';
-import paneEpaneCafe from '../assets/assets-ExplorePage/Pane-e-pane.jpg';
 
 // Assets cup
 import coffeeCup from '../assets/assets-ExplorePage/coffee-cup.jpeg';
-import { address } from 'framer-motion/client';
 
 function ExplorePage() {
       const navigate = useNavigate();
@@ -127,55 +115,12 @@ function ExplorePage() {
             className="pb-10 overflow-visible"
           >
 
-            <SwiperSlide>
-              <CafeCard
-                img={kopiJaya}
-                name="Kopi Jaya"
-                address = "Jl. Pajajaran No.25D, Klojen, Kec. Klojen, Kota Malang"
-                rating="★★★★★"
-                id={1}
-              />
-            </SwiperSlide>
+           {cafes.slice(0,5).map((cafe) => (
+              <SwiperSlide key={cafe.id}>
+                <CafeCard {...cafe} />
+              </SwiperSlide>
+            ))}
 
-            <SwiperSlide>
-              <CafeCard
-                img={kopiStudio}
-                address = "Jl. Laksda Adi Sucipto No.193, Blimbing, Kec. Blimbing, Kota Malang"
-                name="Kopi Studio"
-                rating="★★★★☆"
-                id={2}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <CafeCard
-                img={kopiKenangan}
-                address = "Jl. Jakarta No.26, Penanggungan, Kec. Klojen, Kota Malang"
-                name="JoKopi"
-                rating="★★★★★"
-                id={3}
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <CafeCard
-                img={lysBakery}
-                address = "Jl. Kawi Atas No.21, Gading Kasri, Kec. Klojen, Kota Malang"
-                name="de Lys Patisserie"
-                rating="★★★★☆"
-                id={4} 
-              />
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <CafeCard
-                img={AADKcoffee}
-                address = " Jalan Raya, Ngelo, Tlogomas, Kec. Lowokwaru, Kota Malang"
-                name="AADK Eat & Coffee"
-                rating="★★★★★"
-                id={5}
-              />
-            </SwiperSlide>
           </Swiper>
         </div>
 
@@ -223,10 +168,21 @@ function ExplorePage() {
 /* -----------------  CATEGORY BUTTON ------------------ */
 
 const CategoryButton = ({ icon, label }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/more-cafes", {
+      state: { category: label } 
+    });
+  };
+
   return (
-    <button className="border border-white py-4 rounded-xl flex items-center justify-center gap-3 text-lg hover:bg-white hover:text-black transition">
+    <button
+      onClick={handleClick}
+      className="border border-white py-4 rounded-xl flex items-center justify-center gap-3 text-lg hover:bg-white hover:text-black transition"
+    >
       {icon} {label}
-    </button>
+    </button> 
   );
 };
 
