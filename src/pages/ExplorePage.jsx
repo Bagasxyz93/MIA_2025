@@ -7,7 +7,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import CafeCard from "../components/CafeCard";
+
+
 
 import {
   FaMugHot, FaUtensils, FaTree, FaBreadSlice,
@@ -31,6 +36,19 @@ import coffeeCup from '../assets/assets-ExplorePage/coffee-cup.jpeg';
 import { address } from 'framer-motion/client';
 
 function ExplorePage() {
+      const navigate = useNavigate();
+      const { search } = useLocation();
+
+      useEffect(() => {
+        const params = new URLSearchParams(search);
+        if (params.get("goto") === "about") {
+          document.getElementById("about-section")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      }, [search]);
+
   return (
     <div className="w-full min-h-screen bg-black text-white font-montserrat">
 
@@ -38,10 +56,13 @@ function ExplorePage() {
       <Navbar isTransparent={true} />
 
       <div className="w-full py-20 bg-black text-center">
-        <h1 className="text-6xl font-extrabold tracking-wide">CHILL WITH COFFEE</h1>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-wide">
+          CHILL WITH COFFEE
+        </h1>
 
         <div className="mt-10 relative w-fit mx-auto">
-          <img src={coffeeCup} className="w-[300px] mx-auto" />
+          <img src={coffeeCup} className="w-[300px] max-w-full mx-auto" />
+
           <div
             className="
               absolute left-1/2 -translate-x-1/2 
@@ -56,7 +77,7 @@ function ExplorePage() {
       </div>
 
       {/* EXPLORE SECTION */}
-      <div className="w-full bg-white text-black py-16 px-6 md:px-14">
+      <div className="w-full bg-white text-black py-16 px-4 md:px-14 overflow-visible">
 
         <div className="flex justify-between items-center">
           <div>
@@ -64,7 +85,7 @@ function ExplorePage() {
             <p className="text-gray-600 mt-1">Explore the best cafes around you</p>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-2">
 
             <div
               className="
@@ -98,7 +119,7 @@ function ExplorePage() {
               prevEl: '.swiper-button-prev-custom',
             }}
             spaceBetween={25}
-            slidesPerView={1.2}
+            slidesPerView={1.05}
             breakpoints={{
               640: { slidesPerView: 2.2 },
               1024: { slidesPerView: 3.2 }
@@ -142,7 +163,7 @@ function ExplorePage() {
                 address = "Jl. Kawi Atas No.21, Gading Kasri, Kec. Klojen, Kota Malang"
                 name="de Lys Patisserie"
                 rating="★★★★☆"
-                id={4}
+                id={4} 
               />
             </SwiperSlide>
 
@@ -161,6 +182,16 @@ function ExplorePage() {
         <p className="text-gray-600 mt-6">
           There are many cafes around you, let's continue exploring
         </p>
+        
+        <div className="flex justify-end mt-6">
+          <button
+            onClick={() => navigate("/more-cafes")}
+            className="flex items-center gap-2 bg-black text-white px-5 py-3 rounded-xl font-semibold hover:bg-gray-900 transition"
+          >
+            More <FaArrowRight size={16} />
+          </button>
+        </div>
+
       </div>
 
       {/* CATEGORY SECTION */}
@@ -179,64 +210,15 @@ function ExplorePage() {
         </div>
       </div>
 
+      <div id='about-section' className="w-full bg-white text-black py-16 px-6 md:px-14">
+        <h2 className="text-3xl font-extrabold">ABOUT US</h2>
+      </div>     
       <Footer />
     </div>
+
+    
   );
 }
-
-const CafeCard = ({ img, name,address, rating, id }) => {
-  const [saved, setSaved] = useState(false);
-  const navigate = useNavigate();
-
-  return (
-    <div
-      onClick={() => navigate(`/cafe/${id}`)}
-      className="
-        bg-black text-white rounded-3xl p-5 cursor-pointer relative
-        hover:-translate-y-3 hover:shadow-2xl transition-all duration-300
-        w-full 
-        h-[350px] sm:h-[420px] md:h-[450px]
-        overflow-visible
-      "
-    >
-      {/* GAMBAR */}
-      <img
-        src={img}
-        className="
-          w-full 
-          h-40 sm:h-48 md:h-52 
-          object-cover rounded-2xl
-        "
-      />
-
-      {/* NAMA */}
-      <h3 className="mt-4 text-lg sm:text-xl font-bold">{name}</h3>
-
-      {/* ALAMAT */}
-      <p className="text-gray-400 text-sm mt-1">{address}</p>
-
-      {/* RATING */}
-      <p className="text-yellow-500/70 text-sm mt-1">{rating}</p>
-
-      {/* TOMBOL SAVE */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          setSaved(!saved);
-        }}
-        className="
-          absolute bottom-4 right-4 p-3 rounded-full 
-          bg-white text-black shadow-md text-xl
-        "
-      >
-        {saved ? <FaBookmark className="text-black" /> : <FaRegBookmark className="text-black" />}
-      </button>
-    </div>
-  );
-};
-
-
-
 
 /* -----------------  CATEGORY BUTTON ------------------ */
 
