@@ -54,4 +54,8 @@ html, body {
     background-clip: text;
     animation: shine 3s linear infinite;
   }
+  .testimonial-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+
+}
 }
