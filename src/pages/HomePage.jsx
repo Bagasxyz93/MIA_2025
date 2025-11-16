@@ -1,5 +1,5 @@
 // src/pages/HomePage.jsx
-// KODE BERSIH - DENGAN BACKGROUND HITAM & DESKRIPSI BARU
+// KODE BERSIH - DENGAN PERBAIKAN LINK
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +8,8 @@ import Footer from '../components/Footer.jsx';
 import SpotlightCard from '../components/SpotlightCard.jsx';
 import { MapPinIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { FaUtensils } from 'react-icons/fa'; 
+// --- TAMBAHKAN IMPORT INI ---
+import { Link } from 'react-router-dom';
 
 const coffeeSplashImage = '/kopi-muncrat.png'; 
 
@@ -81,19 +83,21 @@ function HomePage() {
                 <motion.span className="inline-block shiny-text">Terdekat</motion.span>
               </h1>
 
-              {/* === PERUBAHAN DESKRIPSI DI SINI === */}
               <p className="text-lg text-gray-300 font-montserrat mb-10">
                 Jelajahi beragam kafe unik di sekitarmu. Cafe-in hadir untuk membantumu menemukan tempat santai favorit baru, sekaligus mendukung bisnis dan UMKM lokal agar lebih dikenal.
               </p>
-              {/* === AKHIR PERUBAHAN === */}
 
               <div className="flex justify-center md:justify-start gap-4 mb-16">
-                  <a
-                    href="/explore"
+                  
+                  {/* === PERUBAHAN: <a> diubah menjadi <Link> dan href diubah menjadi to === */}
+                  <Link
+                    to="/explore"
                     className="inline-flex items-center gap-2 border border-gray-500 px-6 py-3 rounded-md font-semibold font-montserrat text-gray-300 hover:border-white hover:text-white transition-colors shiny-button-text"
                   >
                     Explore More
-                  </a>
+                  </Link>
+                  {/* === AKHIR PERUBAHAN === */}
+
                 </div>
 
               {/* === KARTU FITUR SPOTLIGHT === */}
