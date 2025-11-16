@@ -1,3 +1,5 @@
+// src/pages/CafeDetailPage.jsx
+
 import { useParams, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaStar, FaPlus, FaMinus } from "react-icons/fa";
 import { useState } from "react";
@@ -47,7 +49,9 @@ export default function CafeDetailPage() {
   const getAmount = (itemName) => orders[itemName] || 0;
 
   return (
-    <div className="min-h-screen bg-black text-white relative pb-40">
+    // --- PERUBAHAN 1: Buat padding-bottom responsif ---
+    // (pb-20 di mobile, pb-40 di desktop)
+    <div className="min-h-screen bg-black text-white relative pb-20 md:pb-40">
 
       {/* HEADER */}
       <div className="px-6 md:px-14 pt-24 flex gap-6 items-start">
@@ -124,17 +128,9 @@ export default function CafeDetailPage() {
         ))}
       </div>
 
-      {/* SMALL MAP BOX FIXED AT BOTTOM RIGHT */}
-      <div className="absolute bottom-6 right-6 w-72 h-48 rounded-2xl overflow-hidden shadow-xl border border-white/20">
-        <iframe
-          src={cafe.maps}
-          width="100%"
-          height="100%"
-          loading="lazy"
-          allowFullScreen=""
-        ></iframe>
-      </div>
-
+      {/* --- PERUBAHAN 2: MAP DIPINDAH KE BAWAH TOMBOL --- */}
+      {/* (Tombol-tombol sekarang ada di atas peta) */}
+      
       {/* BUTTONS */}
       <div className="px-6 md:px-14 mt-10 flex gap-4">
         <button
@@ -151,6 +147,25 @@ export default function CafeDetailPage() {
           View Orders
         </button>
       </div>
+
+      {/* --- PERUBAHAN 3: KELAS PETA DIBUAT RESPONSIF --- */}
+      {/* Mobile (default): w-full, h-64 (block biasa)
+        Desktop (md:): absolute, w-72, h-48 (mengambang)
+      */}
+      <div className="
+        px-6 mt-10 w-full h-64 
+        md:absolute md:bottom-6 md:right-6 md:w-72 md:h-48 md:px-0 md:mt-0
+        rounded-2xl overflow-hidden shadow-xl border border-white/20
+      ">
+        <iframe
+          src={cafe.maps}
+          width="100%"
+          height="100%"
+          loading="lazy"
+          allowFullScreen=""
+        ></iframe>
+      </div>
+
     </div>
   );
 }

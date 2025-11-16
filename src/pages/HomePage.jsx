@@ -1,3 +1,6 @@
+// src/pages/HomePage.jsx
+// KODE BERSIH - DENGAN PERBAIKAN LINK
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar.jsx';
@@ -5,6 +8,8 @@ import Footer from '../components/Footer.jsx';
 import SpotlightCard from '../components/SpotlightCard.jsx';
 import { MapPinIcon, UsersIcon } from '@heroicons/react/24/outline';
 import { FaUtensils } from 'react-icons/fa'; 
+// --- TAMBAHKAN IMPORT INI ---
+import { Link } from 'react-router-dom';
 
 const coffeeSplashImage = '/kopi-muncrat.png'; 
 
@@ -39,10 +44,10 @@ function HomePage() {
   }, []);
 
   return (
-    <div className="bg-[#1a110a] overflow-x-hidden">
+    <div className="bg-black overflow-x-hidden"> 
       <Navbar isTransparent={true} />
       <main>
-        <section className="bg-[#1a110a] text-white py-20 px-6 md:px-20 min-h-screen flex items-center relative">
+        <section className="bg-black text-white py-20 px-6 md:px-20 min-h-screen flex items-center relative">
           
           <div className="absolute inset-0 flex items-center justify-end pointer-events-none z-0 overflow-hidden">
             <div className="text-center font-garamond tracking-tighter text-gray-700 opacity-15 text-8xl sm:text-9xl md:text-[12rem] lg:text-[15rem] xl:text-[18rem] leading-none select-none whitespace-nowrap">
@@ -51,7 +56,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="container mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
+         <div className="container mx-auto flex flex-col-reverse md:flex-row items-center gap-12 relative z-10">
             {/* --- Kolom Kiri --- */}
             <motion.div
               className="w-full md:w-1/2 text-center md:text-left mt-16"
@@ -79,17 +84,21 @@ function HomePage() {
               </h1>
 
               <p className="text-lg text-gray-300 font-montserrat mb-10">
-                Experience The Rich And Bold Flavors Of Our Exquisite Coffee Blends, Crafted To Awaken Your Senses And Start Your Day Right
+                Jelajahi beragam kafe unik di sekitarmu. Cafe-in hadir untuk membantumu menemukan tempat santai favorit baru, sekaligus mendukung bisnis dan UMKM lokal agar lebih dikenal.
               </p>
 
               <div className="flex justify-center md:justify-start gap-4 mb-16">
-                 <a
-                   href="/explore"
-                   className="inline-flex items-center gap-2 border border-gray-500 px-6 py-3 rounded-md font-semibold font-montserrat text-gray-300 hover:border-white hover:text-white transition-colors shiny-button-text"
-                 >
-                   Explore More
-                 </a>
-               </div>
+                  
+                  {/* === PERUBAHAN: <a> diubah menjadi <Link> dan href diubah menjadi to === */}
+                  <Link
+                    to="/explore"
+                    className="inline-flex items-center gap-2 border border-gray-500 px-6 py-3 rounded-md font-semibold font-montserrat text-gray-300 hover:border-white hover:text-white transition-colors shiny-button-text"
+                  >
+                    Explore More
+                  </Link>
+                  {/* === AKHIR PERUBAHAN === */}
+
+                </div>
 
               {/* === KARTU FITUR SPOTLIGHT === */}
               <motion.div

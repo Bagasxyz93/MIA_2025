@@ -102,3 +102,5 @@ export default function MoreCafePage() {
     </div>
   );
 }
+
+//MoreCafePage.jsx
